@@ -116,7 +116,7 @@ int fetchcycles=0,memcycs,fetchclocks;
 uint8_t prefetchqueue[6];
 uint16_t prefetchpc;
 int prefetchw=0;
-inline uint8_t FETCH()
+static inline uint8_t FETCH()
 {
         uint8_t temp;
 /*        temp=prefetchqueue[0];
@@ -170,7 +170,7 @@ inline uint8_t FETCH()
         return temp;
 }
 
-inline void FETCHADD(int c)
+static inline void FETCHADD(int c)
 {
         int d;
 //        if (output) printf("FETCHADD %i\n",c);
@@ -225,7 +225,7 @@ void FETCHCOMPLETE()
                 fetchcycles+=(4-(fetchcycles&3));
 }
 
-inline void FETCHCLEAR()
+static inline void FETCHCLEAR()
 {
 /*        int c;
         fetchcycles=0;
