@@ -15,6 +15,7 @@
 #include "nvr.h"
 #include "sound.h"
 #include "video.h"
+#include "mem.h"
 
 typedef struct
 {
@@ -1087,13 +1088,15 @@ bool retro_unserialize(const void *data_, size_t size)
 
 void *retro_get_memory_data(unsigned id)
 {
-   (void)id;
+   if ( id == RETRO_MEMORY_SYSTEM_RAM )
+      return ram;
    return NULL;
 }
 
 size_t retro_get_memory_size(unsigned id)
 {
-   (void)id;
+   if ( id == RETRO_MEMORY_SYSTEM_RAM )
+      return mem_size*1024;
    return 0;
 }
 
